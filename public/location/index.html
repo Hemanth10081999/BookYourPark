@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Book Your Park</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        th,
+        td {
+            text-align: center;
+        }
+        
+        .button {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: rgba(112, 179, 182, 0.61);
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 20px;
+            padding: 5px;
+            width: 170px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+        
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        
+        .button:hover span {
+            padding-right: 25px;
+        }
+        
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+        
+        .custom-class {
+            background: linear-gradient(70deg, #127d1b7e, rgba(243, 93, 33, 0.486), #4b3bda7c, #32f14b7e);
+            background-size: 400% 400%;
+            -webkit-animation: AnimationName 17s ease infinite;
+            -moz-animation: AnimationName 17s ease infinite;
+            animation: AnimationName 17s ease infinite;
+        }
+        
+        @-webkit-keyframes AnimationName {
+            0% {
+                background-position: 0% 50%
+            }
+            50% {
+                background-position: 100% 50%
+            }
+            100% {
+                background-position: 0% 50%
+            }
+        }
+        
+        @-moz-keyframes AnimationName {
+            0% {
+                background-position: 0% 50%
+            }
+            50% {
+                background-position: 100% 50%
+            }
+            100% {
+                background-position: 0% 50%
+            }
+        }
+        
+        @keyframes AnimationName {
+            0% {
+                background-position: 0% 50%
+            }
+            50% {
+                background-position: 100% 50%
+            }
+            100% {
+                background-position: 0% 50%
+            }
+        }
+    </style>
+
+
+
+</head>
+
+<body class="custom-class" onload="loadlocation()">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!--navigation bar-->
+    <div class=".bs-example">
+        <nav class="navbar navbar-expand-md navbar-dark" style="background-image: linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));">
+            <a class="navbar-brand"><img src="images/logo.png" height="40" alt="Book Your Park"></a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+
+                    <a href="../" class="nav-item nav-link active">Home</a>
+
+                    <a href="#" class="nav-item nav-link active disabled"><b>Locations</b></a>
+                </div>
+
+                <div class="navbar-nav ml-auto">
+                    <a href="../profile" class="nav-item nav-link active">Profile</a>
+                    <a href="../vehicle" class="nav-item nav-link active">Vehicle</a>
+
+                    <a href="#" class="nav-item nav-link active" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--navigation bar end-->
+
+
+    <!--navigation bar filter-->
+    <div class=".bs-example">
+        <nav class="navbar navbar-expand-md navbar-light" style="background-image: linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));">
+            <div class="navbar-nav ml-auto">
+                <div class="container mt-1">
+                    <div class="row">
+                        <h6 class="navbar-brand" style="color: #FFFFFF">Location Sector :</h6>
+                        <form class="form-inline">
+                            <div class="form-group mr-4">
+                                <select class="btn btn-light dropdown-toggle" id="myList">
+                                <option value = "">All</option>
+                                <option value = "pr">Private</option>
+                                <option value = "pu">Public</option>
+                            </select>
+                            </div>
+                            <div class="form-group mr-2">
+                                <button type="button" class="button" onclick="sorttable()"><span>Sort Locations</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--navigation bar filter end-->
+
+
+    <!--Start of division-->
+
+    <div class="container mt-3" style="margin-bottom: 100px;">
+        <div class="row">
+            <div class="col-md-6" style="position: relative;">
+
+                <!--script for map-->
+                <div id="map" style="width:100%;height:500px;"></div>
+
+            </div>
+
+            <!--end of first division-->
+
+            <div class="col-md-6">
+                <h3>Available Slots:</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th><b>Name</b></th>
+                                <th><b>Location</b></th>
+                                <th><b>Available</b></th>
+                            </tr>
+                        </thead>
+                        <tbody id="posts">
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!--End of division-->
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--navigation bar bottom-->
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-bottom" style="background-image: linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));">
+        <a class="navbar-brand"><img src="images/logo.png" height="40" alt="Book Your Park"></a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse1">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse1">
+            <div class="navbar-nav ml-auto">
+                <div class="bs-example">
+                    <form class="form-inline" action="#" method="post">
+                        <div class="form-group mr-2">
+                            <label class="sr-only" for="inputEmail">Email</label>
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+                        </div>
+                        <div class="form-group mr-2">
+                            <label class="sr-only" for="inputquery">Query</label>
+                            <input type="text" class="form-control" id="inputquery" placeholder="Your query" required>
+                        </div>
+                        <div class="form-group mr-2">
+                            <button type="submit" class="button"><span>Submit</span></button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!--navigation bar bottom end-->
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBohFo2O4q1eInVSPAfG7OV1VVpC7uH0_s"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
