@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- CSS for animation -->
     <style>
@@ -17,7 +17,7 @@
         td {
             text-align: center;
         }
-        
+
         .button {
             display: inline-block;
             border-radius: 4px;
@@ -32,14 +32,14 @@
             cursor: pointer;
             margin: 5px;
         }
-        
+
         .button span {
             cursor: pointer;
             display: inline-block;
             position: relative;
             transition: 0.5s;
         }
-        
+
         .button span:after {
             content: '\00bb';
             position: absolute;
@@ -48,23 +48,23 @@
             right: -20px;
             transition: 0.5s;
         }
-        
+
         .button:hover span {
             padding-right: 25px;
         }
-        
+
         .button:hover span:after {
             opacity: 1;
             right: 0;
         }
-        
+
         #map {
             height: 400px;
             /* The height is 400 pixels */
             width: 90%;
             /* The width is the width of the web page */
         }
-        
+
         .custom-class {
             background: linear-gradient(70deg, #127d1b7e, rgba(243, 93, 33, 0.486), #4b3bda7c, #32f14b7e);
             background-size: 400% 400%;
@@ -72,38 +72,44 @@
             -moz-animation: AnimationName 17s ease infinite;
             animation: AnimationName 17s ease infinite;
         }
-        
+
         @-webkit-keyframes AnimationName {
             0% {
                 background-position: 0% 50%
             }
+
             50% {
                 background-position: 100% 50%
             }
+
             100% {
                 background-position: 0% 50%
             }
         }
-        
+
         @-moz-keyframes AnimationName {
             0% {
                 background-position: 0% 50%
             }
+
             50% {
                 background-position: 100% 50%
             }
+
             100% {
                 background-position: 0% 50%
             }
         }
-        
+
         @keyframes AnimationName {
             0% {
                 background-position: 0% 50%
             }
+
             50% {
                 background-position: 100% 50%
             }
+
             100% {
                 background-position: 0% 50%
             }
@@ -118,30 +124,37 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 
     <!--navigation bar-->
     <div class=".bs-example">
-        <nav class="navbar navbar-expand-md navbar-dark" style="background-image: linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));">
+        <nav class="navbar navbar-expand-md navbar-dark"
+            style="background-image: linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));">
             <a class="navbar-brand"><img src="images/logo.png" height="40" alt="Book Your Park"></a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav">
 
-                    <a href="../home/index.html" class="nav-item nav-link active">Home</a>
+                    <a href="../" class="nav-item nav-link active">Home</a>
 
                     <a href="#" class="nav-item nav-link active disabled"><b>Locations</b></a>
                 </div>
 
                 <div class="navbar-nav ml-auto">
-                    <a href="../profile/index.html" class="nav-item nav-link active">Profile</a>
-                    <a href="../vehicle/index.html" class="nav-item nav-link active">Vehicle</a>
+                    <a href="../profile" class="nav-item nav-link active">Profile</a>
+                    <a href="../vehicle" class="nav-item nav-link active">Vehicle</a>
                     <a href="#" class="nav-item nav-link active" onclick="logout()">Logout</a>
                 </div>
             </div>
@@ -152,7 +165,8 @@
 
     <!--navigation bar filter-->
     <div class=".bs-example">
-        <nav class="navbar navbar-expand-md navbar-light" style="background-image: linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));">
+        <nav class="navbar navbar-expand-md navbar-light"
+            style="background-image: linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));">
             <div class="navbar-nav">
                 <div class="container mt-1">
                     <div class="row">
@@ -170,13 +184,13 @@
                         <form class="form-inline">
                             <div class="form-group mr-4">
                                 <select class="btn btn-light dropdown-toggle" id="myList">
-                                <option value = "0">Select Slot Type</option>
-                                <option value = "1">Bike</option>
-                                <option value = "2">MiniCar</option>
-                                <option value = "3">FamilyCar</option>
-                                <option value = "4">SUV</option>
+                                    <option value="0">Select Slot Type</option>
+                                    <option value="1">Bike</option>
+                                    <option value="2">MiniCar</option>
+                                    <option value="3">FamilyCar</option>
+                                    <option value="4">SUV</option>
 
-                            </select>
+                                </select>
                             </div>
                             <div class="form-group mr-2">
                                 <button type="button" class="button" onclick="sort()"><span>Filter</span></button>
@@ -263,7 +277,6 @@
                                 <th><b>#</b></th>
                                 <th><b>Slotname</b></th>
                                 <th><b>Floor</b></th>
-                                <th><b>Limit</b></th>
                                 <th><b>Value</b></th>
                             </tr>
                         </thead>
@@ -282,11 +295,12 @@
 
     <!--navigation bar bottom-->
 
-    <nav class="navbar navbar-expand-md navbar-dark fixed-bottom" style="background-image: linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-bottom"
+        style="background-image: linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));">
         <a class="navbar-brand"><img src="images/logo.png" height="40" alt="Book Your Park"></a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse1">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse" id="navbarCollapse1">
             <div class="navbar-nav ml-auto">
@@ -312,11 +326,10 @@
 
     <!--navigation bar bottom end-->
 
-
-
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBohFo2O4q1eInVSPAfG7OV1VVpC7uH0_s"></script>
-    </script>
-
+    <script src="script.js"></script>
 
 </body>
 

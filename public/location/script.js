@@ -64,10 +64,10 @@ function loadlocation() {
             var location = data.data()["name"];
 
             document.getElementById('posts').innerHTML += `
-            <tr onclick="locClick('${location}')">
-            <td style="text-align: unset;">${data.data()["name"]}</td>
-            <td style="text-align: unset;">${data.data()["address"]}</td>
-            <td style="text-align: unset;">${data.data()["available"]}</td>
+            <tr style="text-align: center;" onclick="locClick('${location}')">
+            <td>${data.data()["name"]}</td>
+            <td>${data.data()["address"]}</td>
+            <td>${data.data()["available"]}</td>
             </tr>`;
 
             locations.push(new google.maps.LatLng({ lat: parseFloat(data.data()["latitude"]), lng: parseFloat(data.data()["longitude"]) }));
@@ -112,10 +112,10 @@ function initMaps(latitude, longitude) {
         });
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
-                
+
                 var infowindow = new google.maps.InfoWindow({
                     content: '<h6>' + namelist[i] + '</h6>' +
-                        '<p> Slots available : ' + availablelist[i] + '</p>' 
+                        '<p> Slots available : ' + availablelist[i] + '</p>'
                 });
                 infowindow.open(map, marker);
                 map.setZoom(16);

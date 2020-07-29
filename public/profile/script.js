@@ -42,7 +42,7 @@ function logout() {
     document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "createDate=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "phone=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    window.location = "../home/index.html";
+    window.location = "../login";
 }
 
 function initial() {

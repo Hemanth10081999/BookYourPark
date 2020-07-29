@@ -8,16 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <script src="script.js"></script>
     <!-- CSS for animation -->
     <style>
         th,
         td {
             text-align: center;
         }
-        
+
         .button {
             display: inline-block;
             border-radius: 4px;
@@ -32,14 +32,14 @@
             cursor: pointer;
             margin: 5px;
         }
-        
+
         .button span {
             cursor: pointer;
             display: inline-block;
             position: relative;
             transition: 0.5s;
         }
-        
+
         .button span:after {
             content: '\00bb';
             position: absolute;
@@ -48,21 +48,21 @@
             right: -20px;
             transition: 0.5s;
         }
-        
+
         .button:hover span {
             padding-right: 25px;
         }
-        
+
         .button:hover span:after {
             opacity: 1;
             right: 0;
         }
-        
+
         .details {
             padding-left: 55px;
             padding-bottom: 20px;
         }
-        
+
         .custom-class {
             background: linear-gradient(70deg, #127d1b7e, rgba(243, 93, 33, 0.486), #4b3bda7c, #32f14b7e);
             background-size: 400% 400%;
@@ -70,38 +70,44 @@
             -moz-animation: AnimationName 17s ease infinite;
             animation: AnimationName 17s ease infinite;
         }
-        
+
         @-webkit-keyframes AnimationName {
             0% {
                 background-position: 0% 50%
             }
+
             50% {
                 background-position: 100% 50%
             }
+
             100% {
                 background-position: 0% 50%
             }
         }
-        
+
         @-moz-keyframes AnimationName {
             0% {
                 background-position: 0% 50%
             }
+
             50% {
                 background-position: 100% 50%
             }
+
             100% {
                 background-position: 0% 50%
             }
         }
-        
+
         @keyframes AnimationName {
             0% {
                 background-position: 0% 50%
             }
+
             50% {
                 background-position: 100% 50%
             }
+
             100% {
                 background-position: 0% 50%
             }
@@ -116,15 +122,22 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 
 
     <!--navigation bar-->
     <div class=".bs-example">
-        <nav class="navbar navbar-expand-md navbar-dark" style="background-image: linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));">
+        <nav class="navbar navbar-expand-md navbar-dark"
+            style="background-image: linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));">
             <a class="navbar-brand"><img src="images/logo.png" height="40" alt="Book Your Park"></a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -246,19 +259,22 @@
                 <br>
                 <form>
                     <div class="form-group row">
-                        <label for="from" class="col-sm-2 col-form-label" style="font-weight: bold;font-size: 16px;">From</label>
+                        <label for="from" class="col-sm-2 col-form-label"
+                            style="font-weight: bold;font-size: 16px;">From</label>
                         <div class="col-sm-10">
                             <input type="datetime-local" class="form-control" id="fromTime" required>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="to" class="col-sm-2 col-form-label" style="font-weight: bold;font-size: 16px;">To</label>
+                        <label for="to" class="col-sm-2 col-form-label"
+                            style="font-weight: bold;font-size: 16px;">To</label>
                         <div class="col-sm-10">
                             <input type="datetime-local" class="form-control" id="toTime" required>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="Vehicle" class="col-sm-2 col-form-label" style="font-weight: bold;font-size: 16px;">Interval</label>
+                        <label for="Vehicle" class="col-sm-2 col-form-label"
+                            style="font-weight: bold;font-size: 16px;">Interval</label>
                         <div class="col-sm-10">
                             <select class="btn btn-light dropdown-toggle" id="intervallist">
                                 <option value="1">1 hour</option>
@@ -270,7 +286,8 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="Vehicle" class="col-sm-2 col-form-label" style="font-weight: bold;font-size: 16px;">Vehicle</label>
+                        <label for="Vehicle" class="col-sm-2 col-form-label"
+                            style="font-weight: bold;font-size: 16px;">Vehicle</label>
                         <div class="col-sm-10">
                             <select class="btn btn-light dropdown-toggle" id="myList">
                                 <option value="0">Select one of your vehcle</option>
@@ -281,13 +298,15 @@
 
                     <div class="form-group row">
                         <div class="col-sm-10 offset-sm-2">
-                            <button type="button" class="button" onclick="verify()" style="background-image:  linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));   "><span>Verify
+                            <button type="button" class="button" onclick="verify()"
+                                style="background-image:  linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));   "><span>Verify
                                 </span></button>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-10 offset-sm-2">
-                            <button type="button" class="button" id="bookbutton" onclick="book()" style="background-image:  linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));   "><span>Book
+                            <button type="button" class="button" id="bookbutton" onclick="book()"
+                                style="background-image:  linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));   "><span>Book
                                     My Park </span></button>
                         </div>
                     </div>
@@ -317,7 +336,8 @@
 
     <!--navigation bar bottom-->
 
-    <nav class="navbar navbar-expand-md navbar-dark fixed-bottom" style="background-image: linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-bottom"
+        style="background-image: linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));">
         <a class="navbar-brand"><img src="images/logo.png" height="40" alt="Book Your Park"></a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse1">
             <span class="navbar-toggler-icon"></span>
@@ -346,9 +366,9 @@
     </nav>
 
     <!--navigation bar bottom end-->
-
-
-
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,13 @@
+var firebaseConfig = {
+    apiKey: "AIzaSyBANZCmMMwdxBEWU8nMdhMxfP25P_u_34A",
+    authDomain: "bookyourpark.firebaseapp.com",
+    databaseURL: "https://bookyourpark.firebaseio.com",
+    projectId: "bookyourpark",
+    storageBucket: "bookyourpark.appspot.com",
+    messagingSenderId: "197640546163",
+    appId: "1:197640546163:web:24d9b5866cd1e280674706"
+};
+
 function logout() {
     document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "userName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -5,14 +15,25 @@ function logout() {
     document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "createDate=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "phone=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    window.location = "../home/index.html";
+    window.location = "../login";
 }
 
+function findcookie() {
+    var mailid = getCookie("mailid");
 
-
+    if (mailid == "") {
+        window.location = "../login";
+    } else {
+        if (getCookie("parked") != "") {
+            window.location = "../outpark";
+        } else if(getCookie("slot") == ""){
+            window.location = "../location";
+        }
+    }
+}
 
 function initial() {
-
+    findcookie();
     document.getElementById('bookbutton').disabled = true;
     document.getElementById('payment').hidden = true;
 

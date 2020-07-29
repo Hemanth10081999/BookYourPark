@@ -9,7 +9,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <script src="script.js"></script>
 
 
     <!-- CSS for animation -->
@@ -142,7 +141,6 @@
                                 <th><b>Name</b></th>
                                 <th><b>Type</b></th>
                                 <th><b></b></th>
-                                <th><b></b></th>
                             </tr>
                         </thead>
                         <tbody id="posts">
@@ -160,7 +158,7 @@
                 <h2 class="text-center my-3">Add Vehicle</h2>
                 <br>
                 <div class=".bs-example">
-                    <form>
+                    <div>
 
                         <div class="form-group row">
                             <label for="inputvehiclename" class="col-sm-2 col-form-label" style="font-weight: bold;font-size: 16px;">Name</label>
@@ -203,7 +201,7 @@
                                 <button class="button" type="button" onclick="add()" style="background-image:  linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));   "><span>Add Vehicle </span></button>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -238,6 +236,10 @@
             </div>
         </div>
     </nav>
+
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="script.js"></script>
 
     <!--navigation bar bottom end-->
 </body>
