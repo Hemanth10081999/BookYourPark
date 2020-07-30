@@ -113,9 +113,6 @@
             }
         }
     </style>
-
-
-
 </head>
 
 <body class="custom-class" onload="initial()">
@@ -132,8 +129,6 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-
-
     <!--navigation bar-->
     <div class=".bs-example">
         <nav class="navbar navbar-expand-md navbar-dark"
@@ -145,33 +140,20 @@
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav">
-
-                    <a href="../home/index.html" class="nav-item nav-link active">Home</a>
-                    <a href="../location/index.html" class="nav-item nav-link active">Locations</a>
+                    <a href="../" class="nav-item nav-link active">Home</a>
+                    <a href="../location" class="nav-item nav-link active">Locations</a>
                 </div>
-
                 <div class="navbar-nav ml-auto">
-                    <a href="../vehicle/index.html" class="nav-item nav-link active">Vehicle</a>
-                    <a href="../profile/index.html" class="nav-item nav-link active">Profile</a>
+                    <a href="../vehicle" class="nav-item nav-link active">Vehicle</a>
+                    <a href="../profile" class="nav-item nav-link active">Profile</a>
                     <a href="#" class="nav-item nav-link active" onclick="logout()">Logout</a>
                 </div>
             </div>
         </nav>
     </div>
-    <!--navigation bar end-->
-    <!--division seperation start-->
-
-
-
-
-
-
-
-    <!--Start of division-->
 
     <div class="container mt-3" style="margin-bottom: 100px;">
         <div class="row">
-
             <div class="col-md-6" style="position: relative;">
                 <div style="width:100%;height:100%;border:1px solid #000;">
                     <h3 align="center" style="margin: 30px;">Slot Details</h3>
@@ -217,12 +199,11 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="container mt-3">
                         <div class="row">
                             <div class="col-md-6" style="position: relative;">
                                 <div class="details">
-                                    <h5 align="left">Slot Price (per hour):</h5>
+                                    <h5 align="left">Slot Price:</h5>
                                 </div>
                             </div>
                             <div class="col-md-6" style="position: relative;">
@@ -232,8 +213,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="container mt-3">
                         <div class="row">
                             <div class="col-md-6" style="position: relative;">
@@ -248,16 +227,13 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-
 
             <div class="col-md-6">
                 <h3 align="center">Book Slot:</h3>
                 <br>
-                <form>
+                <div>
                     <div class="form-group row">
                         <label for="from" class="col-sm-2 col-form-label"
                             style="font-weight: bold;font-size: 16px;">From</label>
@@ -276,7 +252,7 @@
                         <label for="Vehicle" class="col-sm-2 col-form-label"
                             style="font-weight: bold;font-size: 16px;">Interval</label>
                         <div class="col-sm-10">
-                            <select class="btn btn-light dropdown-toggle" id="intervallist">
+                            <select onchange="verify()" class="btn btn-light dropdown-toggle" id="intervallist">
                                 <option value="1">1 hour</option>
                                 <option value="2">2 hours</option>
                                 <option value="3">3 hours</option>
@@ -289,7 +265,7 @@
                         <label for="Vehicle" class="col-sm-2 col-form-label"
                             style="font-weight: bold;font-size: 16px;">Vehicle</label>
                         <div class="col-sm-10">
-                            <select class="btn btn-light dropdown-toggle" id="myList">
+                            <select onchange="verify()" class="btn btn-light dropdown-toggle" id="myList">
                                 <option value="0">Select one of your vehcle</option>
                             </select>
                             <p class="text-danger" id="alertregpass"></p>
@@ -298,43 +274,15 @@
 
                     <div class="form-group row">
                         <div class="col-sm-10 offset-sm-2">
-                            <button type="button" class="button" onclick="verify()"
-                                style="background-image:  linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));   "><span>Verify
-                                </span></button>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-10 offset-sm-2">
                             <button type="button" class="button" id="bookbutton" onclick="book()"
                                 style="background-image:  linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));   "><span>Book
                                     My Park </span></button>
                         </div>
                     </div>
-
-                </form>
+                </div>
             </div>
-
-            <!--end of first division-->
-
-
-
-            <!--end of second division-->
-
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-    <!--division seperation start-->
-
-
-    <!--navigation bar bottom-->
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-bottom"
         style="background-image: linear-gradient(-45deg, rgba(182, 42, 182, 0.781), rgba(160, 9, 247, 0.904));">
@@ -360,7 +308,6 @@
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
     </nav>

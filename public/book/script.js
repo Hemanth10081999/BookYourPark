@@ -26,7 +26,7 @@ function findcookie() {
     } else {
         if (getCookie("parked") != "") {
             window.location = "../outpark";
-        } else if(getCookie("slot") == ""){
+        } else if (getCookie("slot") == "") {
             window.location = "../location";
         }
     }
@@ -36,41 +36,38 @@ function initial() {
     findcookie();
     document.getElementById('bookbutton').disabled = true;
     document.getElementById('payment').hidden = true;
+    document.getElementById('bookbutton').disabled = true;
 
     slot = getCookie('slot');
     loc = getCookie('location');
-    fetch('http://localhost:8080/api/locations/' + loc)
-        .then((res) => res.json())
-        .then(posts => {
+    var mail = getCookie('mailid');
 
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+    var db = firebase.firestore();
+    db.collection("location").doc(loc).get().then((data) => {
 
-            document.getElementById('locname').innerHTML = posts.locName;
-            document.getElementById('locaddress').innerHTML = posts.locAddress + "," + posts.locCity;
+        document.getElementById('locname').innerHTML = data.data()["name"];
+        document.getElementById('locaddress').innerHTML = data.data()["address"] + "," + data.data()["city"];
 
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+    }).catch((error) => {
+        console.error(error);
+        alert("Some error occured, Try again later");
+    });
 
+    db.collection("location").doc(loc).collection("slots").doc(slot).get().then((data) => {
+        document.getElementById('slotdetail').innerHTML = data.data()["name"];
+        document.getElementById('value').innerHTML = data.data()["value"];
 
-    fetch('http://localhost:8080/api/slotdetails/' + slot)
-        .then((res) => res.json())
-        .then(posts => {
-
-            document.getElementById('slotdetail').innerHTML = posts.name;
-            document.getElementById('value').innerHTML = posts.value;
-
-            document.cookie = "sid=" + posts.id + ";path=/";
-            document.cookie = "stype=" + posts.type + ";path=/";
-            document.cookie = "svalue=" + posts.value + ";path=/";
-            document.cookie = "sname=" + posts.name + ";path=/";
-            document.cookie = "sfloor=" + posts.floor + ";path=/";
-            document.cookie = "stime=" + posts.time + ";path=/";
-
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+        document.cookie = "stype=" + data.data()["type"] + ";path=/";
+        document.cookie = "svalue=" + data.data()["value"] + ";path=/";
+        document.cookie = "sname=" + data.data()["name"] + ";path=/";
+        document.cookie = "sfloor=" + data.data()["floor"] + ";path=/";
+    }).catch((error) => {
+        console.error(error);
+        alert("Some error occured, Try again later");
+    });
 
     var d = new Date();
     d.setHours(d.getHours() + 5);
@@ -85,29 +82,36 @@ function initial() {
     var n1 = d1.toISOString().replace('Z', '');
     document.getElementById('toTime').defaultValue = n1;
     document.getElementById("toTime").readOnly = true;
-    var getid = getCookie('id');
 
 
-    fetch('http://localhost:8080/api/vehicles/login/' + getid)
-        .then(response => response.json())
-        .then(posts => {
-            posts.forEach(p => {
-                console.log(p.number, p.name)
-                document.cookie = "vehicle=" + p.id + ";path=/";
-                if (p.type == getCookie('stype')) {
-                    var ne = p.name + ' ' + p.number;
-                    document.getElementById('myList').innerHTML += `
-                        <option value = "${p.number}">${ne}</option>
-                        `;
-                }
-                console.log(p.title)
-            })
-        })
-        .catch((err) => {
-            console.log(err);
+    db.collection("location").doc(loc).collection("slots").doc(slot).get().then((data) => {
+        document.getElementById('slotdetail').innerHTML = data.data()["name"];
+        document.getElementById('value').innerHTML = data.data()["value"];
+
+        document.cookie = "stype=" + data.data()["type"] + ";path=/";
+        document.cookie = "svalue=" + data.data()["value"] + ";path=/";
+        document.cookie = "sname=" + data.data()["name"] + ";path=/";
+        document.cookie = "sfloor=" + data.data()["floor"] + ";path=/";
+
+        console.log(data.data()['type']);
+
+        db.collection("user").doc(mail).collection("vehicle").where("type", "==", data.data()["type"]).get().then((data) => {
+            data.forEach((data) => {
+                var i = 1;
+                var ne = data.data()["name"] + ' ' + data.data()["number"];
+                document.getElementById('myList').innerHTML += `
+                    <option value = "${i++}">${ne}</option>`;
+            });
+        }).catch((error) => {
+            console.error(error);
+            alert("Some error occured, Try again later");
         });
-}
 
+    }).catch((error) => {
+        console.error(error);
+        alert("Some error occured, Try again later");
+    });
+}
 
 function getCookie(cname) {
     var name = cname + "=";
@@ -132,7 +136,10 @@ function verify() {
 
     if (strSel == "0") {
         document.getElementById('alertregpass').innerHTML = `Select a vehicle that matches the slot type.`;
+        document.cookie = "vehicle=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.getElementById('bookbutton').disabled = true;
     } else {
+        document.cookie = "vehicle=" + sort.options[sort.selectedIndex].text + ";path=/";
         document.getElementById('alertregpass').innerHTML = ``;
         document.getElementById('payment').hidden = false;
         var sort1 = document.getElementById('intervallist');
@@ -151,110 +158,45 @@ function verify() {
         var val = Math.abs(Math.round(diff));
         var value = getCookie('svalue');
         var amount = val * value;
+        document.cookie = "amount=" + amount + ";path=/";
         document.getElementById('pay').innerHTML = `${amount}`;
         document.getElementById('bookbutton').disabled = false;
     }
 }
 
-
 function book() {
 
     var dt1 = new Date(document.getElementById('fromTime').value);
     var dt2 = new Date(document.getElementById('toTime').value);
-    var vehicle = getCookie('vehicle');
-    var slot = getCookie('slot');
 
-    const url = 'http://localhost:8080/api/parkings';
-    const data = {
-        'inTime': dt1,
-        'outTime': dt2,
-        'vehicle': {
-            'id': vehicle
-        },
-        'slotdetails': {
-            'id': slot
-        }
-    };
-    console.log('' + JSON.stringify(data));
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
 
-    .then(response => response.json())
-        .then(data => {
-
-            //new code
-            //alert("it might work");
-            var sname = getCookie('sname');
-            var stype = getCookie('stype');
-            var sfloor = getCookie('sfloor');
-            var svalue = getCookie('svalue');
-            var stime = getCookie('stime');
-            var sid = getCookie('sid');
-
+    var db = firebase.firestore();
+    db.collection("history").doc().set({
+        'email': getCookie('mailid'),
+        'phone': getCookie('phone'),
+        'location': getCookie('location'),
+        'slot': getCookie('slot'),
+        'floor': getCookie('sfloor'),
+        'from': dt1,
+        'to': dt2,
+        'vehicle': getCookie('vehicle'),
+        'payment': getCookie('amount')
+    }).then((data) => {
+        var db = firebase.firestore();
+        db.collection("location").doc(getCookie('location')).collection('slots').doc(getCookie('slot')).update({
+            "availability": false
+        }).then((data) => {
             document.cookie = "parked=true;path=/";
-
-            const Data = {
-                url: 'http://localhost:8080/api/slotdetails/' + sid,
-                data: {
-                    "name": sname,
-                    "floor": sfloor,
-                    "availability": false,
-                    "type": stype,
-                    "time": stime,
-                    "value": svalue
-                }
-            };
-
-            putData(Data.url, Data.data)
-
-            .then(data => { window.location.href = "../outpark/index.html" })
-                .catch(error => console.error(error));
-
-
-
-
-            //new code
-        })
-        .catch(error => console.error(error));
-
-}
-
-function postData(url = '', data = {}) {
-    console.log('posting starts');
-    return fetch(url, {
-            method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache',
-            credentials: 'same-origin',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            redirect: 'follow',
-            referrer: 'no-refrrer',
-            body: JSON.stringify(data),
-        })
-        .then(response => response.json());
-}
-
-
-function putData(url = '', data = {}) {
-    console.log('posting starts');
-    return fetch(url, {
-            method: 'PUT',
-            mode: 'cors',
-            cache: 'no-cache',
-            credentials: 'same-origin',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            redirect: 'follow',
-            referrer: 'no-refrrer',
-            body: JSON.stringify(data),
-        })
-        .then(response => response.json());
+            window.location.href = "../outpark";
+        }).catch((error) => {
+            console.error(error);
+            alert("Some error occured, Try again later");
+        });
+    }).catch((error) => {
+        console.error(error);
+        alert("Some error occured, Try again later");
+    });
 }

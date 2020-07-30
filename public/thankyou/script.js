@@ -9,11 +9,7 @@ function erace(){
     document.cookie = "svalue=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "vehicle=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
-
-
-    setTimeout(function(){ window.location="../home/index.html"; }, 5000);
-
-    
+    setTimeout(function(){ window.location="../home/index.html"; }, 3000);   
 }
 
 
