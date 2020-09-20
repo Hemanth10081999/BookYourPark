@@ -1,8 +1,11 @@
 const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+admin.initializeApp();
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+exports.updateSlot = functions.https.onRequest(async (req, res) => {
+  const locationName = req.query.location;
+  const slotName = req.query.slot;
+  const updateStatus = (req.query.status === '0');
+  const writeResult = await admin.firestore().collection('location').doc(locationName).collection('slots').doc(slotName).update({availability: updateStatus});
+  res.json({result: `Write Successful`});
+});
